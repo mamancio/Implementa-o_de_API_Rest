@@ -17,6 +17,9 @@
   },
   "homepage": "https://github.com/mamancio/Implementa-o_de_API_Rest#readme",
   "dependencies": {
-    "express": "^4.19.2"
+    "@hapi/inert": "^7.1.0",
+    "@hapi/vision": "^7.0.3",
+    "express": "^4.19.2",
+    "hapi-swagger": "^17.2.1"
   }
 }
