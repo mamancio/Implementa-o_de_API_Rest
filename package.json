@@ -1,0 +1,22 @@
+{
+  "name": "exercicio-final",
+  "version": "1.0.0",
+  "description": "Implementação de API Rest",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mamancio/Implementa-o_de_API_Rest.git"
+  },
+  "author": "Matheus Mancio",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mamancio/Implementa-o_de_API_Rest/issues"
+  },
+  "homepage": "https://github.com/mamancio/Implementa-o_de_API_Rest#readme",
+  "dependencies": {
+    "express": "^4.19.2"
+  }
+}
