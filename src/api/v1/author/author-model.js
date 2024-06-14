@@ -1,12 +1,12 @@
-const Sequelize = require('sequelize');
+const mongoose = require('mongoose');
 const database = require('../../../config/db');
 
-const Author = database.sequelize.define('Author', {
+const Author = new mongoose.Schema('Author', {
     id: {
         type: Sequelize.UUIDV4,
         allowNull: false,
         primaryKey: true,
-        field: 'id' //nome do atributo do banco
+        field: 'id' 
     },
     name: {
         type: Sequelize.STRING,
@@ -28,4 +28,4 @@ const Author = database.sequelize.define('Author', {
     tableName: 'tb_author' //nome da tabela banco
 });
 
-module.exports = Author;
+module.exports = mongoose.model('Author', bookSchema);

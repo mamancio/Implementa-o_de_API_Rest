@@ -21,6 +21,7 @@
     "@hapi/vision": "^7.0.3",
     "express": "^4.19.2",
     "hapi-swagger": "^17.2.1",
+    "klaw-sync": "^6.0.0",
     "mongoose": "^8.4.1"
   }
 }
