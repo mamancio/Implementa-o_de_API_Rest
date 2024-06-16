@@ -46,8 +46,18 @@ const getBooks = {
     })
 };
 
+const deleteById = {
+    params: Joi.object({
+        id: Joi
+            .number()
+            .string()
+            .required()
+    })
+};
+
 module.exports = {
     createBooksSchema,
     getById,
-    getBooks
+    getBooks,
+    deleteById
 };
