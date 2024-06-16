@@ -1,34 +1,47 @@
-const mongoose = require('mongoose');
-const database = require('../../../confg/db');
-
+const Sequelize = require('sequelize');
+const database = require('../../../../confg/db');
 const Author = require('../author/author-model');
 
-
-const bookSchema = new mongoose.Schema({
+const Book = database.sequelize.define('Book', {
+    id: {
+        type: Sequelize.INTEGER,
+        autoIncrement: true,
+        allowNull: true,
+        primaryKey: true,
+        field: 'codigo'
+    },
     title: {
-        type: String,
-        required: true
+        type: Sequelize.STRING,
+        allowNull: false,
+        field: 'title'
     },
     authorId: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'Author',
-        required: true
+        type: Sequelize.INTEGER,
+        field: 'authorId',
+        references: {
+            model: 'Author',
+            key: 'id'
+        }
     },
     publishedDate: {
-        type: String,
-        required: true
+        type: Sequelize.STRING,
+        allowNull: false,
+        field: 'publishedDate'
     },
     isbn: {
-        type: String,
-        required: true
+        type: Sequelize.STRING,
+        allowNull: false,
+        field: 'isbn'
     },
     summary: {
-        type: String,
-        required: true
-    }
+        type: Sequelize.STRING,
+        allowNull: false,
+        field: 'summary'
+    },    
 }, {
     timestamps: false,
-    collection: 'tb_books' // Nome da coleção no MongoDB
+    tableName: 'tb_book'
 });
+Book.belongsTo(Author, {foreignKey: 'authorId'});
 
-module.exports = mongoose.model('Book', bookSchema);
+module.exports = Book;

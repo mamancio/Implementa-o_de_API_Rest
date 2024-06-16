@@ -1,7 +1,9 @@
-const authorModel = require('./author-model');
+const productModel = require('./author-model');
+const {Op} = require('sequelize');
+const Category = require('../category/author-model');
 
 const syncModel = async () => {
-    await authorModel.sync({ force: false }); //force: true para recriar a tabela a cada inicialização
+    await authorModel.sync({ force: false }); 
 };
 
 const save = async (author) => {

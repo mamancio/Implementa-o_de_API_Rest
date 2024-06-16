@@ -3,7 +3,7 @@ const schema = require('./author-schema');
 
 const plugin = {
     name: 'author-routes',
-    version: '1',
+    version: '1.0.0',
     register: (server) => {
         server.route([
             {
@@ -11,7 +11,7 @@ const plugin = {
                 path: "/authors",
                 options: {
                     tags: ['Authors'],
-                    description: 'List of authors',
+                    description: 'Lista de autores',
                     handler: getAuthors,
                 }
             },
@@ -20,7 +20,7 @@ const plugin = {
                 path: "/authors/{id}",
                 options: {
                     tags: ['Authors'],
-                    description: 'Authors by Id',
+                    description: 'códigos de autores',
                     handler: findById,
                     validate: schema.getById
                 }

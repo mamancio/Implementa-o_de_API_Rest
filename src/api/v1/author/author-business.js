@@ -1,7 +1,7 @@
 const repository = require('./author-repository')
 
-const create = async (autor) => {
-    return repository.save(autor);
+const create = async (author) => {
+    return repository.save(author);
 };
 
 const list = async (filter) => {

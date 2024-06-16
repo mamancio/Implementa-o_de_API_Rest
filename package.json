@@ -18,10 +18,14 @@
   "homepage": "https://github.com/mamancio/Implementa-o_de_API_Rest#readme",
   "dependencies": {
     "@hapi/inert": "^7.1.0",
+    "@hapi/joi": "^17.1.1",
     "@hapi/vision": "^7.0.3",
     "express": "^4.19.2",
+    "hapi": "^18.1.0",
     "hapi-swagger": "^17.2.1",
+    "inert": "^5.1.3",
     "klaw-sync": "^6.0.0",
-    "mongoose": "^8.4.1"
+    "mongoose": "^8.4.1",
+    "vision": "^5.4.4"
   }
 }

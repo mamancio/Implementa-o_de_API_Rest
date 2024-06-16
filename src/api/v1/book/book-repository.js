@@ -1,5 +1,5 @@
 const bookModel = require('./book-model');
-const {Op} = require('mongoose');
+const {Op} = require('sequelize');
 const Author = require('../author/author-model');
 
 const save = async (book) => {
@@ -25,7 +25,7 @@ const findById = async (id) => {
     return bookModel.findOne({
         include: [ {
             model: Author,
-            required: false //left
+            required: false
         }],
         where: {
             id: id

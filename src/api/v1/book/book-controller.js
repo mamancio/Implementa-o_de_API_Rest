@@ -12,7 +12,7 @@ const create = async (request, h) => {
     const {payload} = request;
 
     try {
-        payload.authorId = payload.author.id;
+        payload.bookId = payload.book.id;
         const result = await business.create(payload);
 
         return h.response(result).code(201);
@@ -28,8 +28,21 @@ const findById = async (request, h) => {
     return h.response(await business.findById(bookId));
 };
 
+const deleteById = async (request, h) => {
+    const productId = request.params.id;
+    
+    try {
+        await business.deleteById(bookId);
+
+        return h.response({}).code(204);
+    } catch (error) {
+        console.log(error)
+    }
+}
+
 module.exports = {
     getBooks,
     create,
-    findById
+    findById,
+    deleteById
 };

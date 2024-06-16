@@ -5,8 +5,6 @@ const createAuthorsSchema = {
 
         name: Joi
                 .string()
-                .min(10)
-                .max(80)
                 .required(),
 
         biography: Joi
@@ -15,8 +13,6 @@ const createAuthorsSchema = {
                 
         birthDate: Joi
                 .string()
-                .min(8)
-                .max(8)
                 .required()
     })
 };
@@ -24,7 +20,8 @@ const createAuthorsSchema = {
 const getById = {
     params: Joi.object({
         id: Joi
-            .string()
+            .number()
+            .integer()
             .required()
     })
 };
@@ -32,10 +29,28 @@ const getById = {
 const deleteById = {
     params: Joi.object({
         id: Joi
-            .string()
+            .number()
+            .integer()
             .required()
     })
 };
+
+const getAuthores = {
+    query: Joi.object({
+        name: Joi
+                .string()
+                .required(),
+
+        biography: Joi
+                .string()
+                .required(),
+                
+        birthDate: Joi
+                .string()
+                .required()
+    })
+}
+
 
 module.exports = {
     createAuthorsSchema, 

@@ -1,12 +1,8 @@
-const { server, plugins } = require('./src/routes/server')
-const connectDB = require('./src/confg/db');
+const {server, plugins} = require('./server');
 
 (async () => {
     try {
-        // Connect to MongoDB
-        await connectDB();
-
-        // Register routes and plugins
+        
         await server.register(plugins);
 
         await server.start();

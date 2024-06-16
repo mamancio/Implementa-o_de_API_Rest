@@ -1,7 +1,6 @@
 const business = require('./author-business');
 
-const getAuthors = async (request, h) => {
-    
+const getAuthor = async (request, h) => {    
     const {query} = request;
 
     const result = await business.list(query);
@@ -9,51 +8,40 @@ const getAuthors = async (request, h) => {
 };
 
 const create = async (request, h) => {
-    
+
+    const {payload} = request;
+
     try {
-        const result = await business.create(request.payload);
+        payload.authorId = payload.book.id;
+        const result = await business.create(payload);
+
         return h.response(result).code(201);
     } catch(error) {
-        console.error(error);
-        return h.response({ error: 'Internal Server Error' }).code(500);
+        console.log(error);
     }
 };
 
-const findById = async (request, h) => {    
+const findById = async (request, h) => {
+    
     const authorId = request.params.id;
-    const result = await business.findById(authorId);
-    if (result) {
-        return h.response(result).code(200);
-    } else {
-        return h.response({ error: 'Autor não encontrado' }).code(404);
-    }
+
+    return h.response(await business.findById(authorId));
 };
 
 const deleteById = async (request, h) => {
-    const authorId = request.params.id;    
+    const productId = request.params.id;
+    
     try {
-        const result = await business.findById(authorId);        
-        if (result) {
-            try {
-                await business.deleteById(authorId);
-                return h.response('Autor removido com sucesso').code(204);
-            } catch (error) {
-                if (error.name === "SequelizeForeignKeyConstraintError") {
-                    return h.response({error: "Não é possível deletar um autor que está referenciado em outra tabela!"}).code(400);
-                } else {
-                    return h.response({ error: 'Internal Server Error' }).code(500);
-                }
-            }
-        } else {
-            return h.response({ error: 'Autor não encontrado' }).code(404);
-        }
+        await business.deleteById(authorId);
+
+        return h.response({}).code(204);
     } catch (error) {
-        return h.response({ error: 'Internal Server Error' }).code(500);
+        console.log(error)
     }
-};
+}
 
 module.exports = {
-    getAuthors,
+    getAuthor,
     create,
     findById,
     deleteById
